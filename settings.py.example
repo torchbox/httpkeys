@@ -1,0 +1,26 @@
+# vim:sw=4 ts=4 et:
+#
+# Copyright (c) 2016 Torchbox Ltd.
+# 2016-05-20 <felicity@torchbox.com>
+#
+
+DEBUG = False
+
+LDAP_URI = 'ldap://ldap-a.itl.rslon.torchbox.net ldap://ldap-b.itl.rslon.torchbox.net'
+
+LDAP_TLS_CERT = '/etc/ssl/certs/tbx-ca.pem'
+
+LDAP_USER_BASE = 'ou=people,dc=torchbox,dc=com'
+LDAP_GROUP_BASE = 'ou=group,dc=torchbox,dc=com'
+
+LDAP_KEY_ATTR = 'secureShellPublicKey'
+
+LDAP_UID_SEARCH_FILTER = '(&(uid={uid})(accountStatus=active))'
+LDAP_GROUP_SEARCH_FILTER = '(&(cn={group})(memberUid={username}))
+
+LDAP_EXTENDED_FILTERS = {
+    '$employeeType':        '(&(employeeType={arg1})(accountStatus=active)(objectClass=torchboxAccount))',
+    '$authorizedService':   '(&(authorizedService={arg1})(accountStatus=active)(objectClass=torchboxAccount))',
+
+}
+
