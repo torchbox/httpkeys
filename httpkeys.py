@@ -51,7 +51,8 @@ def access_get(conn, acc):
 
         keys = []
         for user in ret:
-            keys += user[1][settings.LDAP_KEY_ATTR]
+            if settings.LDAP_KEY_ATTR in user[1]:
+                keys += user[1][settings.LDAP_KEY_ATTR]
 
         return keys
 
@@ -66,7 +67,8 @@ def access_get(conn, acc):
                 [ settings.LDAP_KEY_ATTR ])
         keys = []
         for user in ret:
-            keys += user[1][settings.LDAP_KEY_ATTR]
+            if settings.LDAP_KEY_ATTR in user[1]:
+                keys += user[1][settings.LDAP_KEY_ATTR]
         return keys
     else:
         # User lookup
@@ -77,7 +79,8 @@ def access_get(conn, acc):
                     [ settings.LDAP_KEY_ATTR ])
         keys = []
         for user in ret:
-            keys += user[1][settings.LDAP_KEY_ATTR]
+            if settings.LDAP_KEY_ATTR in user[1]:
+                keys += user[1][settings.LDAP_KEY_ATTR]
         return keys
 
 # Look up SSH keys for a list of one or more access list entries.
